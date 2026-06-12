@@ -23,22 +23,10 @@ clients = [
                         "price": 5.49,
                         "upc": "041333424019",
                         "category": [
-                            {
-                                "id": "pcmcat312300050015",
-                                "name": "Connected Home & Housewares"
-                            },
-                            {
-                                "id": "pcmcat248700050021",
-                                "name": "Housewares"
-                            },
-                            {
-                                "id": "pcmcat303600050001",
-                                "name": "Household Batteries"
-                            },
-                            {
-                                "id": "abcat0208002",
-                                "name": "Alkaline Batteries"
-                            }
+                            {"id": "pcmcat312300050015", "name": "Connected Home & Housewares"},
+                            {"id": "pcmcat248700050021", "name": "Housewares"},
+                            {"id": "pcmcat303600050001", "name": "Household Batteries"},
+                            {"id": "abcat0208002", "name": "Alkaline Batteries"}
                         ],
                         "shipping": 5.49,
                         "description": "Compatible with select electronic devices; AAA size; DURALOCK Power Preserve technology; 4-pack",
@@ -53,9 +41,17 @@ clients = [
     }
 ]
 
-# Crear un DataFrame de pandas a partir de la lista de diccionarios 'clients'
-df = pd.DataFrame.from_records(
-    [
-        {
-            'First_name': client['Personal_Data']['First_name'],
-            'Last_name': client['Personal_Data']['Last_name'],
+records = [
+    {
+        'First_name': c['Personal_Data']['First_name'],
+        'Last_name': c['Personal_Data']['Last_name'],
+        'Phone': c['Personal_Data']['Phone'],
+        'Email': c['Personal_Data']['Email'],
+        'Product': c['Order'][0]['products'][0]['name'],
+        'Price': c['Order'][0]['products'][0]['price'],
+    }
+    for c in clients
+]
+
+df = pd.DataFrame.from_records(records)
+print(df)

@@ -36,8 +36,8 @@ def lanzar_ruleta(veces_a_lanzar):
     lista_choice = []
 
     for _ in tqdm(range(veces_a_lanzar)):
-        nr = random.randint(0, 36)  # Número al azar que entrega la ruleta
-        cr = random.choice(["Rojo", "Negro"])  # Color al azar que entrega la ruleta
+        nr = random.randint(0, 36)
+        cr = random.choice(["Rojo", "Negro"])
         lista.append(nr)
         lista_choice.append(cr)
 
@@ -57,19 +57,16 @@ def resultado_ruleta(nr, cr):
     print("Número:", nr)
 
 
-def calcular_ganancia(mon_apuesta, nr, color, cr):
-    if nr != num_rul_jug and color == cr:  # Ganando el 20% del dinero apostado
+def calcular_ganancia(mon_apuesta, nr, color, cr, num_rul_jug):
+    if nr != num_rul_jug and color == cr:
         ganancia = mon_apuesta * 0.2
         print("Usted ha ganado:", ganancia)
-
-    elif nr == num_rul_jug and color != cr:  # Ganando el 100% del dinero apostado
+    elif nr == num_rul_jug and color != cr:
         ganancia = mon_apuesta * 2
         print("Usted ha ganado:", ganancia)
-
-    elif nr == num_rul_jug and color == cr:  # Ganando el 200% del dinero apostado
+    elif nr == num_rul_jug and color == cr:
         ganancia = mon_apuesta * 4
         print("Usted ha ganado:", ganancia)
-
     else:
         print("Mala suerte, no ganó nada")
 
@@ -79,7 +76,12 @@ if __name__ == "__main__":
     print("# RULETA MONTECARLO #")
     print("#####################")
 
-    mon_apuesta = int(input("Ingrese el monto a apostar: "))
+    try:
+        mon_apuesta = int(input("Ingrese el monto a apostar: "))
+    except ValueError:
+        print("Monto inválido")
+        exit(1)
+
     color = obtener_color()
     num_rul_jug = obtener_numero()
 
@@ -88,4 +90,13 @@ if __name__ == "__main__":
     op_rul = input("Presione Enter para lanzar Ruleta: ")
 
     if op_rul == "":
-        veces_a_lanzar = int(input("Veces a lanzar")
+        try:
+            veces_a_lanzar = int(input("Veces a lanzar: "))
+        except ValueError:
+            print("Número inválido")
+            exit(1)
+
+        numeros, colores = lanzar_ruleta(veces_a_lanzar)
+        for nr, cr in zip(numeros, colores):
+            resultado_ruleta(nr, cr)
+            calcular_ganancia(mon_apuesta, nr, color, cr, num_rul_jug)
