@@ -10,10 +10,11 @@ class Primo:
                 return False
         return True
 
-print("Numeros primos")
-num = int(input("Ingrese un numero: "))
-primo = Primo(num)
-if primo.es_primo():
-    print("El numero es primo")
-else:
-    print("El numero no es primo")
+if __name__ == "__main__":
+    print("Numeros primos")
+    num = int(input("Ingrese un numero: "))
+    primo = Primo(num)
+    if primo.es_primo():
+        print("El numero es primo")
+    else:
+        print("El numero no es primo")
