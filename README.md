@@ -50,7 +50,7 @@ Ejercicios prácticos de Python organizados por categoría. Ideal para repasar f
 | `dic_a_dataframe.py` | Convierte JSON anidado a DataFrame de pandas |
 | `test_json_df.py` | Consulta farmacias de turno (API MINSAL) y lo muestra como tabla |
 | `api_weather.py` | Clima actual vía wttr.in |
-| `turtle_spiral.py` | Espiral colorida con turtle graphics |
+| `turtle_spiral.py` | Espiral colorida con turtle graphics *(demo gráfica)* |
 
 ### stats/
 | Script | Qué hace |

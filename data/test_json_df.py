@@ -23,7 +23,7 @@ if __name__ == "__main__":
         print(f"Total farmacias de turno: {len(df)}")
         print("\nPrimeras 5:")
         print(df.head(5).to_string(index=False))
-        print(f"\nFila 22:")
+        print("\nFila 22:")
         if len(df) > 22:
             print(df.iloc[22].to_string())
         else:

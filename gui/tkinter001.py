@@ -55,7 +55,7 @@ def save(uname, pwd, cpwd, status):
     if b != c:
         messagebox.showerror("Error", "Las contraseñas no coinciden")
         return
-    _guardar_user(a, _hash(b))
+    _guardar_usuario(a, _hash(b))
     messagebox.showinfo("Success", "Cuenta creada exitosamente")
     uname.set("")
     pwd.set("")
