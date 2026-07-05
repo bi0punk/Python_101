@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Python_101"
+version = "1.0.0"
+description = "Ejercicios prácticos de Python organizados por categoría"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=1.0",
+    "numpy>=1.20",
+    "requests>=2.25",
+    "tqdm>=4.60",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
