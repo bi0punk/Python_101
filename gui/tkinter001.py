@@ -84,13 +84,19 @@ def main():
     ttk.Entry(frame, textvariable=pwd, show="*", font=("Segoe UI", 12)).pack(fill="x", pady=(0, 10))
 
     ttk.Label(frame, text="Confirmar Contraseña", font=("Segoe UI", 12)).pack(anchor="w")
-    ttk.Entry(frame, textvariable=cpwd, show="*", font=("Segoe UI", 12)).pack(fill="x", pady=(0, 20))
+    ttk.Entry(frame, textvariable=cpwd, show="*", font=("Segoe UI", 12)).pack(
+        fill="x", pady=(0, 20)
+    )
 
     btn_frame = ttk.Frame(frame)
     btn_frame.pack()
 
-    ttk.Button(btn_frame, text="Login", command=lambda: check(uname, pwd, cpwd)).pack(side="left", padx=5)
-    ttk.Button(btn_frame, text="Registrarse", command=lambda: save(uname, pwd, cpwd)).pack(side="left", padx=5)
+    ttk.Button(btn_frame, text="Login", command=lambda: check(uname, pwd, cpwd)).pack(
+        side="left", padx=5
+    )
+    ttk.Button(btn_frame, text="Registrarse", command=lambda: save(uname, pwd, cpwd)).pack(
+        side="left", padx=5
+    )
 
     root.mainloop()
 

@@ -11,9 +11,9 @@ def obtener_color():
         try:
             col_apuesta = int(input())
             if col_apuesta == 1:
-                return 'Rojo'
+                return "Rojo"
             elif col_apuesta == 2:
-                return 'Negro'
+                return "Negro"
             else:
                 print("Ingrese una opción válida")
         except ValueError:

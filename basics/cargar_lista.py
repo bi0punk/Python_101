@@ -10,6 +10,7 @@ def cargar_alumnos():
         nombres.append(nombre)
     return nombres
 
+
 if __name__ == "__main__":
     alumnos = cargar_alumnos()
     print(f"\nAlumnos registrados: {len(alumnos)}")
