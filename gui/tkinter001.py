@@ -1,7 +1,7 @@
-import tkinter as tk
-from tkinter import messagebox, ttk
 import hashlib
 import os
+import tkinter as tk
+from tkinter import messagebox, ttk
 
 DATA_FILE = "Login.txt"
 
@@ -14,7 +14,7 @@ def _leer_usuarios():
     if not os.path.exists(DATA_FILE):
         return {}
     d = {}
-    with open(DATA_FILE, "r") as f:
+    with open(DATA_FILE) as f:
         for linea in f:
             linea = linea.strip()
             if ":" in linea:
@@ -28,7 +28,7 @@ def _guardar_usuario(user, pw_hash):
         f.write(f"{user}:{pw_hash}\n")
 
 
-def check(uname, pwd, cpwd, status):
+def check(uname, pwd, cpwd):
     a, b, c = uname.get(), pwd.get(), cpwd.get()
     usuarios = _leer_usuarios()
     if b != c:
@@ -43,7 +43,7 @@ def check(uname, pwd, cpwd, status):
     messagebox.showinfo("Welcome", f"Hello {a}, login exitoso")
 
 
-def save(uname, pwd, cpwd, status):
+def save(uname, pwd, cpwd):
     a, b, c = uname.get(), pwd.get(), cpwd.get()
     if not a or not b or not c:
         messagebox.showerror("Error", "Todos los campos son obligatorios")
@@ -89,8 +89,8 @@ def main():
     btn_frame = ttk.Frame(frame)
     btn_frame.pack()
 
-    ttk.Button(btn_frame, text="Login", command=lambda: check(uname, pwd, cpwd, None)).pack(side="left", padx=5)
-    ttk.Button(btn_frame, text="Registrarse", command=lambda: save(uname, pwd, cpwd, None)).pack(side="left", padx=5)
+    ttk.Button(btn_frame, text="Login", command=lambda: check(uname, pwd, cpwd)).pack(side="left", padx=5)
+    ttk.Button(btn_frame, text="Registrarse", command=lambda: save(uname, pwd, cpwd)).pack(side="left", padx=5)
 
     root.mainloop()
 

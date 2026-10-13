@@ -1,5 +1,6 @@
-from tqdm import tqdm
 import random
+
+from tqdm import tqdm
 
 
 def obtener_color():
@@ -97,6 +98,6 @@ if __name__ == "__main__":
             exit(1)
 
         numeros, colores = lanzar_ruleta(veces_a_lanzar)
-        for nr, cr in zip(numeros, colores):
+        for nr, cr in zip(numeros, colores, strict=True):
             resultado_ruleta(nr, cr)
             calcular_ganancia(mon_apuesta, nr, color, cr, num_rul_jug)

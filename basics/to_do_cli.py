@@ -7,7 +7,7 @@ TASKS_FILE = "tareas.json"
 def cargar():
     if not os.path.exists(TASKS_FILE):
         return []
-    with open(TASKS_FILE, "r") as f:
+    with open(TASKS_FILE) as f:
         return json.load(f)
 
 

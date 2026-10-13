@@ -5,10 +5,7 @@ class Primo:
     def es_primo(self):
         if self.num < 2:
             return False
-        for i in range(2, int(self.num**0.5)+1):
-            if self.num % i == 0:
-                return False
-        return True
+        return all(self.num % i != 0 for i in range(2, int(self.num**0.5) + 1))
 
 if __name__ == "__main__":
     print("Numeros primos")
